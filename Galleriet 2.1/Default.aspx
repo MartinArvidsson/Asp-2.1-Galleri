@@ -9,11 +9,30 @@
 <body>
     <form id="form1" runat="server">
     <div>
-        <asp:Repeater ID="Repeater1" runat="server"></asp:Repeater>
+        <%-- Bilden --%>
+        <asp:Image ID="MainPicture" runat="server" />
+        
+        <%-- Tumnaglar --%>
+        <asp:Repeater ID="Thumbnailrepeater" runat="server" SelectMethod="Thumbnailrepeater_GetData" ItemType="System.string">
+            
+            <%--Templatet på vad som ska rendeas ut varje gång som en bild läggs till! --%>
+            <ItemTemplate>
+                <asp:HyperLink ID="ThumnailHyperlink" 
+                    runat="server" 
+                    ImageURL='<%#"~/Galleri/Gallerithumb/"+ Item %>>' 
+                    NavigateURL='<%#"?name=" + Item %>'>
+                </asp:HyperLink>  
+            </ItemTemplate>
+
+        </asp:Repeater><br />
+        <%-- ladda upp bild --%>
+        <asp:Button ID="SendButton" runat="server" Text="Ladda upp!" OnClick="SendButton_Click" />
         <asp:FileUpload ID="FileUploader" runat="server" />
+
+        <%-- Validatorer --%>
         <asp:RequiredFieldValidator 
             ID="RequiredFieldValidator" 
-            runat="server" ErrorMessage="RequiredFieldValidator" 
+            runat="server" ErrorMessage="Måste välja en fil >:(" 
             Display="Dynamic" 
             ControlToValidate="FileUploader">
         </asp:RequiredFieldValidator>
@@ -21,13 +40,10 @@
         <asp:RegularExpressionValidator
             ID="RegExValidator" 
             runat="server" 
-            ErrorMessage="RegularExpressionValidator" 
+            ErrorMessage="Måste vara Jpeg , Gif eller png" 
             ControlToValidate="FileUploader" 
             Display="Dynamic">
         </asp:RegularExpressionValidator>
-
-        <asp:Button ID="Button1" runat="server" Text="Button" />
-        <asp:HyperLink ID="HyperLink1" runat="server">HyperLink</asp:HyperLink><asp:Image ID="Image1" runat="server" />
     </div>
     </form>
 </body>

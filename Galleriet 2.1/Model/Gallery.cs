@@ -61,7 +61,7 @@ namespace Galleriet_2._1.BOL
                 }
                 fileName = newFileName + Path.GetExtension(fileName);
 
-                Image.Save(PhysicalUploadedImagesPath + fileName);
+                Image.Save(Path.Combine(PhysicalUploadedImagesPath, fileName));  //(PhysicalUploadedImagesPath + fileName);
                 //Thumbnail.Save (PhysicalUploadedImagesPath + "Gallerithumb/" + fileName);
                 Thumbnail.Save(Path.Combine(AppDomain.CurrentDomain.GetData("APPBASE").ToString(), "Galleri", "Gallerithumb"));
 
