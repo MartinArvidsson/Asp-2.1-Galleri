@@ -4,17 +4,23 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
+    <link rel="stylesheet" type="text/css" href="~/Model/Style.css" />
     <title></title>
 </head>
 <body>
     <form id="form1" runat="server">
     <%--Din bild laddades / laddades inte upp ska synas här.--%>
-    <div>
-
-    </div>
+        <asp:PlaceHolder ID="MessagePlaceholder" Visible="false" runat="server">
+            <div id="SuccessBox">
+                <label>Din bild laddades upp!</label>
+                    <div id="SuccessButton">
+                        <label>X</label>
+                    </div>
+            </div>
+        </asp:PlaceHolder>
         <div>
         <%-- Bilden(Den stora) --%>
-        <asp:Image ID="MainPicture" runat="server" />
+        <asp:Image ID="MainPicture" runat="server" /> <br />
         
         <%-- Tumnaglar --%>
         <asp:Repeater ID="Thumbnailrepeater" runat="server" SelectMethod="Thumbnailrepeater_GetData" ItemType="System.String">
@@ -23,7 +29,7 @@
             <ItemTemplate>
                 <asp:HyperLink ID="ThumnailHyperlink" 
                     runat="server" 
-                    ImageURL='<%#"~/Galleri/Gallerithumb/"+ Item %>>' 
+                    ImageURL='<%# "~/Galleri/Gallerithumbnails/" + Item %>' 
                     NavigateURL='<%#"?name=" + Item %>'>
                 </asp:HyperLink>  
             </ItemTemplate>

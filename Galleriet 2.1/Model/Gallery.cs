@@ -13,17 +13,19 @@ namespace Galleriet_2._1.BOL
         private static readonly Regex ApprovedExtensions;
         private static string PhysicalUploadedImagesPath; //= "~/Martin 2.1 Galleri/Galleriet 2.1/Galleri";        
         private static readonly Regex SanitizePath;
+        private static string PhysicalUploadThumbImagePath;
+
         static Gallery()
         {
             ApprovedExtensions = new Regex(@"^.*\.(gif|jpg|png)$");
             PhysicalUploadedImagesPath = Path.Combine(AppDomain.CurrentDomain.GetData("APPBASE").ToString(), "Galleri");
-
+            PhysicalUploadThumbImagePath = Path.Combine(AppDomain.CurrentDomain.GetData("APPBASE").ToString(), "Galleri", "Gallerithumbnails");
             var invalidChars = new string(Path.GetInvalidFileNameChars());
             SanitizePath = new Regex(string.Format("[{0}]", Regex.Escape(invalidChars)));    
         }
         public IEnumerable<string> GetImageNames()
         {
-            var directory = new DirectoryInfo(Path.Combine(PhysicalUploadedImagesPath, "Gallerithumbnails"));
+            var directory = new DirectoryInfo(PhysicalUploadThumbImagePath);
             FileInfo[] fileinfo = directory.GetFiles();
             var imageList = fileinfo.Select(image => image.Name).Where(filename => ApprovedExtensions.IsMatch(filename)).ToList();
 

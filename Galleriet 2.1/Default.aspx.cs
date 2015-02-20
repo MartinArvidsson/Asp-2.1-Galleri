@@ -19,7 +19,15 @@ namespace Galleriet_2._1
         }
         protected void Page_Load(object sender, EventArgs e)
         {
+            string path = Request.QueryString["name"];
 
+            if(path != null)
+            {
+                MainPicture.ImageUrl = "~/Galleri/" + path;
+                MessagePlaceholder.Visible = true;
+                MainPicture.Visible = true;
+
+            }
         }
 
         protected void SendButton_Click(object sender, EventArgs e) //FileContent + FileName till SaveImages
@@ -27,7 +35,7 @@ namespace Galleriet_2._1
             Gallery.SaveImage(FileUploader.FileContent , FileUploader.FileName);
         }
 
-        public IEnumerable<System.String> Thumbnailrepeater_GetData()
+        public IEnumerable<string> Thumbnailrepeater_GetData()
         {
             return gallery.GetImageNames();
         }
