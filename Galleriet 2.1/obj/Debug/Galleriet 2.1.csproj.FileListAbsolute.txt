@@ -5,3 +5,8 @@ C:\Users\Martin\Desktop\SKOLSAKER\Galleriet 2.1\Galleriet 2.1\bin\Galleriet 2.1.
 C:\Users\Martin\Desktop\SKOLSAKER\Galleriet 2.1\Galleriet 2.1\obj\Debug\Galleriet 2.1.csprojResolveAssemblyReference.cache
 C:\Users\Martin\Desktop\SKOLSAKER\Galleriet 2.1\Galleriet 2.1\obj\Debug\Galleriet 2.1.dll
 C:\Users\Martin\Desktop\SKOLSAKER\Galleriet 2.1\Galleriet 2.1\obj\Debug\Galleriet 2.1.pdb
+C:\Users\ma223ku\Desktop\Martin 2.1 Galleri\Galleriet 2.1\bin\Galleriet 2.1.dll.config
+C:\Users\ma223ku\Desktop\Martin 2.1 Galleri\Galleriet 2.1\bin\Galleriet 2.1.dll
+C:\Users\ma223ku\Desktop\Martin 2.1 Galleri\Galleriet 2.1\bin\Galleriet 2.1.pdb
+C:\Users\ma223ku\Desktop\Martin 2.1 Galleri\Galleriet 2.1\obj\Debug\Galleriet 2.1.dll
+C:\Users\ma223ku\Desktop\Martin 2.1 Galleri\Galleriet 2.1\obj\Debug\Galleriet 2.1.pdb

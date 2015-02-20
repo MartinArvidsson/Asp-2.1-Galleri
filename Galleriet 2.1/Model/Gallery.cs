@@ -16,44 +16,40 @@ namespace Galleriet_2._1.BOL
         static Gallery()
         {
             ApprovedExtensions = new Regex(@"^.*\.(gif|jpg|png)$");
-            //AppDomain.CurrentDomain.GetData("APPBASE").ToString();
             PhysicalUploadedImagesPath = Path.Combine(AppDomain.CurrentDomain.GetData("APPBASE").ToString(), "Galleri");
 
             var invalidChars = new string(Path.GetInvalidFileNameChars());
             SanitizePath = new Regex(string.Format("[{0}]", Regex.Escape(invalidChars)));    
         }
-
-        IEnumerable<string> GetImageNames()
+        public IEnumerable<string> GetImageNames()
         {
-            var directory = new DirectoryInfo(Path.Combine(PhysicalUploadedImagesPath, "Gallerithumb"));
+            var directory = new DirectoryInfo(Path.Combine(PhysicalUploadedImagesPath, "Gallerithumbnails"));
             FileInfo[] fileinfo = directory.GetFiles();
             var imageList = fileinfo.Select(image => image.Name).Where(filename => ApprovedExtensions.IsMatch(filename)).ToList();
 
             return imageList.AsReadOnly();
         }
-
-        private static bool ImageExists(string name)
+        public static bool ImageExists(string name)
         {
             return File.Exists(Path.Combine(PhysicalUploadedImagesPath,name));
         }
-
         private static bool IsValidImage(Image Image)
         {
-            return Image.RawFormat.Guid == System.Drawing.Imaging.ImageFormat.Gif.Guid || Image.RawFormat.Guid == System.Drawing.Imaging.ImageFormat.Jpeg.Guid || Image.RawFormat.Guid == System.Drawing.Imaging.ImageFormat.Png.Guid;
+            return Image.RawFormat.Guid == System.Drawing.Imaging.ImageFormat.Gif.Guid
+                || Image.RawFormat.Guid == System.Drawing.Imaging.ImageFormat.Jpeg.Guid
+                || Image.RawFormat.Guid == System.Drawing.Imaging.ImageFormat.Png.Guid;
         }
 
-        private static string SaveImage(Stream stream, string fileName)
+        public static string SaveImage(Stream stream, string fileName)
         {
             var Image = System.Drawing.Image.FromStream(stream);
-
             if(IsValidImage(Image))
             {
-                var Thumbnail = Image.GetThumbnailImage(60, 45, null, System.IntPtr.Zero);
-
+                var Thumbnail = Image.GetThumbnailImage(60, 45, null, System.IntPtr.Zero); //Storleken tumnagel
                 string newFileName = Path.GetFileNameWithoutExtension(fileName);
                 int i = 2;
 
-                while(ImageExists(newFileName + Path.GetExtension(fileName)))
+                while(ImageExists(newFileName + Path.GetExtension(fileName))) //Om en fil med namnet redan existerar
                 {
                     newFileName = Path.GetFileNameWithoutExtension(fileName);
                     newFileName = newFileName + i;
@@ -61,10 +57,10 @@ namespace Galleriet_2._1.BOL
                 }
                 fileName = newFileName + Path.GetExtension(fileName);
 
-                Image.Save(Path.Combine(PhysicalUploadedImagesPath, fileName));  //(PhysicalUploadedImagesPath + fileName);
-                //Thumbnail.Save (PhysicalUploadedImagesPath + "Gallerithumb/" + fileName);
-                Thumbnail.Save(Path.Combine(AppDomain.CurrentDomain.GetData("APPBASE").ToString(), "Galleri", "Gallerithumb"));
+                Image.Save(Path.Combine(PhysicalUploadedImagesPath, fileName));
 
+                Thumbnail.Save(Path.Combine(PhysicalUploadedImagesPath, "Gallerithumbnails", fileName));
+                //Sökvägen för att spara bilden + tumnageln
                 return fileName;
             }
             else
