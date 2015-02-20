@@ -23,7 +23,7 @@ namespace Galleriet_2._1.BOL
             var invalidChars = new string(Path.GetInvalidFileNameChars());
             SanitizePath = new Regex(string.Format("[{0}]", Regex.Escape(invalidChars)));    
         }
-        public IEnumerable<string> GetImageNames()
+        public static IEnumerable<string> GetImageNames()
         {
             var directory = new DirectoryInfo(PhysicalUploadThumbImagePath);
             FileInfo[] fileinfo = directory.GetFiles();

@@ -10,13 +10,15 @@ namespace Galleriet_2._1
 {
     public partial class Default : System.Web.UI.Page
     {
-        private Gallery gallery
-        {
-            get
-            {
-                return Session["Gallery"] as Gallery ?? (Gallery)(Session["secretnumber"] = new Gallery()); 
-            }
-        }
+        //private Gallery gallery
+        //{
+        //    get
+        //    {
+        //        return Session["Gallery"] as Gallery ?? (Gallery)(Session["secretnumber"] = new Gallery()); 
+        //    }
+        //}
+
+
         protected void Page_Load(object sender, EventArgs e)
         {
             string path = Request.QueryString["name"];
@@ -24,20 +26,24 @@ namespace Galleriet_2._1
             if(path != null)
             {
                 MainPicture.ImageUrl = "~/Galleri/" + path;
-                MessagePlaceholder.Visible = true;
                 MainPicture.Visible = true;
+            }
 
+            if (Session["uploaded"] as string != null)
+            {
+                MessagePlaceholder.Visible = true;
+                Session["uploaded"] = null;
             }
         }
 
         protected void SendButton_Click(object sender, EventArgs e) //FileContent + FileName till SaveImages
         {
-            Gallery.SaveImage(FileUploader.FileContent , FileUploader.FileName);
+            Session["uploaded"] = Gallery.SaveImage(FileUploader.FileContent, FileUploader.FileName);
         }
 
         public IEnumerable<string> Thumbnailrepeater_GetData()
         {
-            return gallery.GetImageNames();
+            return Gallery.GetImageNames();
         }
     }
 }

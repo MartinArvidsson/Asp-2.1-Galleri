@@ -5,6 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <link rel="stylesheet" type="text/css" href="~/Model/Style.css" />
+    <script src="Model/Script.js"></script>
     <title></title>
 </head>
 <body>
@@ -30,7 +31,8 @@
                 <asp:HyperLink ID="ThumnailHyperlink" 
                     runat="server" 
                     ImageURL='<%# "~/Galleri/Gallerithumbnails/" + Item %>' 
-                    NavigateURL='<%#"?name=" + Item %>'>
+                    NavigateURL='<%#"?name=" + Item %>'
+                    CssClass="thumb">
                 </asp:HyperLink>  
             </ItemTemplate>
 
