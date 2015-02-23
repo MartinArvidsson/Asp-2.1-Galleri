@@ -10,19 +10,9 @@ namespace Galleriet_2._1
 {
     public partial class Default : System.Web.UI.Page
     {
-        //private Gallery gallery
-        //{
-        //    get
-        //    {
-        //        return Session["Gallery"] as Gallery ?? (Gallery)(Session["secretnumber"] = new Gallery()); 
-        //    }
-        //}
-
-
         protected void Page_Load(object sender, EventArgs e)
         {
             string path = Request.QueryString["name"];
-
             if(path != null)
             {
                 MainPicture.ImageUrl = "~/Galleri/" + path;
@@ -39,6 +29,8 @@ namespace Galleriet_2._1
         protected void SendButton_Click(object sender, EventArgs e) //FileContent + FileName till SaveImages
         {
             Session["uploaded"] = Gallery.SaveImage(FileUploader.FileContent, FileUploader.FileName);
+
+            Response.Redirect("http://localhost:1370/Default.aspx?"+"name");
         }
 
         public IEnumerable<string> Thumbnailrepeater_GetData()

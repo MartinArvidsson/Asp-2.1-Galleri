@@ -56,7 +56,7 @@
             ErrorMessage="Måste vara Jpeg , Gif eller png" 
             ControlToValidate="FileUploader" 
             Display="Dynamic" 
-            ValidationExpression="^.*\.(gif|jpg|png)$">
+            ValidationExpression="^.*\.(gif|jpg|png|GIF|JPG|PNG)$">
         </asp:RegularExpressionValidator>
     </div>
     </form>
