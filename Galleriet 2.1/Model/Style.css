@@ -7,3 +7,10 @@
     padding:6px;
     border-color:blue;
 }
+.thumbActive{
+    display:inline-block;
+    background-color: Red;
+    border:3px black;
+    padding:6px;
+    border-color:blue;
+}

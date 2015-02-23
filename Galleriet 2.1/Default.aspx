@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <link rel="stylesheet" type="text/css" href="~/Model/Style.css" />
-    <script src="Model/Script.js"></script>
+    
     <title></title>
 </head>
 <body>
@@ -32,7 +32,7 @@
                     runat="server" 
                     ImageURL='<%# "~/Galleri/Gallerithumbnails/" + Item %>' 
                     NavigateURL='<%#"?name=" + Item %>'
-                    CssClass="thumb">
+                    CssClass='<%#MainPicture.ImageUrl.EndsWith(Item) ? "thumbActive" :"thumb" %>'>
                 </asp:HyperLink>  
             </ItemTemplate>
 
@@ -43,11 +43,14 @@
         <label>Ladda upp en bild! Tillåtna format: jpeg, gif och png</label><br />
 
         <%-- Validatorer --%>
+            <asp:ValidationSummary ID="ValidationSummary1" runat="server" />
+
         <asp:RequiredFieldValidator 
             ID="RequiredFieldValidator" 
             runat="server" ErrorMessage="Måste välja en fil (Glöm inte giltigt format!)" 
             Display="Dynamic" 
-            ControlToValidate="FileUploader">
+            ControlToValidate="FileUploader"
+            Text="*">
         </asp:RequiredFieldValidator>
 
         <asp:RegularExpressionValidator
@@ -56,7 +59,8 @@
             ErrorMessage="Måste vara Jpeg , Gif eller png" 
             ControlToValidate="FileUploader" 
             Display="Dynamic" 
-            ValidationExpression="^.*\.(gif|jpg|png|GIF|JPG|PNG)$">
+            ValidationExpression="^.*\.(gif|jpg|png|GIF|JPG|PNG)$"
+            Text="*">
         </asp:RegularExpressionValidator>
     </div>
     </form>

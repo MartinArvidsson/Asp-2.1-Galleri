@@ -16,3 +16,9 @@ C:\Users\ma223ku\Desktop\VIKTIGA SAKER\ASP Galleriet\Galleriet 2.1\bin\Galleriet
 C:\Users\ma223ku\Desktop\VIKTIGA SAKER\ASP Galleriet\Galleriet 2.1\obj\Debug\Galleriet 2.1.csprojResolveAssemblyReference.cache
 C:\Users\ma223ku\Desktop\VIKTIGA SAKER\ASP Galleriet\Galleriet 2.1\obj\Debug\Galleriet 2.1.dll
 C:\Users\ma223ku\Desktop\VIKTIGA SAKER\ASP Galleriet\Galleriet 2.1\obj\Debug\Galleriet 2.1.pdb
+C:\Users\ma223ku\Desktop\Galleri igen!\Galleriet 2.1\bin\Galleriet 2.1.dll.config
+C:\Users\ma223ku\Desktop\Galleri igen!\Galleriet 2.1\bin\Galleriet 2.1.dll
+C:\Users\ma223ku\Desktop\Galleri igen!\Galleriet 2.1\bin\Galleriet 2.1.pdb
+C:\Users\ma223ku\Desktop\Galleri igen!\Galleriet 2.1\obj\Debug\Galleriet 2.1.csprojResolveAssemblyReference.cache
+C:\Users\ma223ku\Desktop\Galleri igen!\Galleriet 2.1\obj\Debug\Galleriet 2.1.dll
+C:\Users\ma223ku\Desktop\Galleri igen!\Galleriet 2.1\obj\Debug\Galleriet 2.1.pdb

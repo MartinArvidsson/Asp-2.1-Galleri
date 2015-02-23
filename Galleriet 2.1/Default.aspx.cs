@@ -30,7 +30,7 @@ namespace Galleriet_2._1
         {
             Session["uploaded"] = Gallery.SaveImage(FileUploader.FileContent, FileUploader.FileName);
 
-            Response.Redirect("http://localhost:1370/Default.aspx?"+"name");
+            Response.Redirect("http://localhost:1370/Default.aspx?name=" + Session["uploaded"] as string);
         }
 
         public IEnumerable<string> Thumbnailrepeater_GetData()
